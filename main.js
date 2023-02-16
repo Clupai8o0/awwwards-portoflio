@@ -18,6 +18,7 @@ export default class Sketch {
 		this.scene = new THREE.Scene();
 
 		this.renderer = new THREE.WebGLRenderer({ antialias: true });
+		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.container.appendChild(this.renderer.domElement);
 		this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -55,7 +56,6 @@ export default class Sketch {
 		this.mesh.rotation.y = this.time / 1000;
 
 		this.renderer.render(this.scene, this.camera);
-		console.log(this.time);
 		requestAnimationFrame(this.render.bind(this));
 	}
 }
